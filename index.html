@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ברוך הבא לחינה!</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fffaf0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      direction: rtl;
+    }
+    input {
+      padding: 10px;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 24px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>ברוך הבא לחינה שלנו!</h1>
+  <p>הזן את שמך כדי לדעת היכן אתה יושב 🎉</p>
+  <input type="text" id="guestName" placeholder="הכנס את שמך כאן">
+  <button onclick="findTable()">חפש שולחן</button>
+  <div id="result"></div>
+
+  <script>
+    const guestList = {
+      "קרן מחלב": 1,
+      "ערן מחלב": 1,
+      "סהר מחלב": 1,
+      "יהב מחלב": 1,
+      "יהלי מחלב": 1,
+      "אפי לובלציק": 1,
+      "תמר לובלציק": 1,
+      "מאי עזרא": 1,
+      "עוז עזרא": 1,
+      "יותם לובלציק": 1,
+      "ניסים דרויש": 2,
+      "תמר דרויש": 2,
+      "שלומית דרויש": 2,
+      "עמית אליאס": 2,
+      "רונה בלאש": 2,
+      "מירון בלאש": 2,
+      "נוי בלאש": 2,
+      "רומי בלאש": 2,
+      "חזי שמשי": 2,
+      "נבו שמשי": 2,
+      "אלה שמשי": 2,
+      "אוריה דרויש": 2,
+      "עדן חדד": 3,
+      "אלעזר ביטון": 3,
+      "לינוי ביטון": 3,
+      "דוריאן וקנין": 3,
+      "אסף בדש": 3,
+      "יובל מור": 3,
+      "דן מקלר": 3,
+      "אביחי תרם": 3,
+      "יובל קפלן": 3,
+      "איתי המבורגר": 3,
+      "ליאם דויטש": 3,
+      "עדי הדר": 4,
+      "ירין הדר": 4,
+      "ענת הדר": 4,
+      "דור הדר": 4,
+      "עמיתי הדר": 4,
+      "סהר הדר": 4,
+      "שני צור": 4,
+      "ספיר צור": 4,
+      "אסנת הלל": 4,
+      "עדי הינדי": 5,
+      "גל אייזנמן": 5,
+      "תומר אייזנמן": 5,
+      "שלומית אייזנמן": 5,
+      "אילן אייזנמן": 5,
+      "קורל אייזנמן": 5,
+      "לירון רווח": 5,
+      "אור רווח": 5,
+      "מיכל רווח": 5,
+      "צחי רווח": 5
+    };
+
+    function findTable() {
+      const name = document.getElementById("guestName").value.trim();
+      const tableNumber = guestList[name];
+      const resultDiv = document.getElementById("result");
+      if (tableNumber) {
+        resultDiv.textContent = `ברוך הבא לחינה שלנו! תודה רבה שבאת ${name}! מקומך בשולחן ${tableNumber} 🎉`;
+      } else {
+        resultDiv.textContent = "מצטערים, לא מצאנו את שמך ברשימה. בדוק שוב או פנה למארחים 🙏";
+      }
+    }
+  </script>
+</body>
+</html>
