@@ -1,112 +1,90 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ברוך הבא לחינה!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
 <style>
 body {
-      font-family: 'Arial', sans-serif;
-      background-color: #fffaf0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to bottom, #fffaf0, #f5e6cc);
       color: #4b3832;
+      font-family: 'Assistant', sans-serif;
+      background: url('https://images.unsplash.com/photo-1549887534-45953e36e742?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #3e2723;
+      backdrop-filter: blur(5px);
 display: flex;
 flex-direction: column;
 align-items: center;
-@@ -16,21 +17,40 @@
+justify-content: center;
+height: 100vh;
 text-align: center;
-direction: rtl;
+      direction: rtl;
+      padding: 20px;
 }
-    h1 {
+h1 {
       font-size: 36px;
       margin-bottom: 10px;
       color: #bfa046;
-    }
-    p {
-      font-size: 20px;
-    }
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: #b71c1c;
+      text-shadow: 1px 1px 2px #fff;
+}
+p {
+font-size: 20px;
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 12px;
+      display: inline-block;
+}
 input {
-padding: 10px;
+      padding: 10px;
+      padding: 12px;
 font-size: 18px;
-margin-top: 20px;
+      margin-top: 20px;
       border: 2px solid #bfa046;
-      border-radius: 8px;
+      margin-top: 10px;
+      border: 2px solid #b71c1c;
+border-radius: 8px;
       width: 250px;
+      width: 260px;
 }
 button {
-padding: 10px 20px;
+      padding: 10px 20px;
+      padding: 12px 24px;
 font-size: 18px;
-margin-top: 10px;
+      margin-top: 10px;
+      margin-top: 15px;
 cursor: pointer;
       background-color: #bfa046;
-      color: white;
-      border: none;
-      border-radius: 8px;
+      background: linear-gradient(45deg, #b71c1c, #f06292);
+color: white;
+border: none;
+border-radius: 8px;
       transition: background-color 0.3s;
-    }
-    button:hover {
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+}
+button:hover {
       background-color: #a38b3f;
+      background: linear-gradient(45deg, #c62828, #ec407a);
 }
 #result {
 margin-top: 30px;
 font-size: 24px;
-      color: #444;
       color: #4b3832;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 15px;
+      border-radius: 12px;
+      max-width: 80%;
 }
 </style>
 </head>
-@@ -43,70 +63,136 @@
+@@ -63,124 +76,17 @@ <h1>ברוך הבא לחינה שלנו!</h1>
 
 <script>
 const guestList = {
-      "קרן מחלב": 1,
-      "ערן מחלב": 1,
-      "סהר מחלב": 1,
-      "יהב מחלב": 1,
-      "יהלי מחלב": 1,
-      "אפי לובלציק": 1,
-      "תמר לובלציק": 1,
-      "מאי עזרא": 1,
-      "עוז עזרא": 1,
-      "יותם לובלציק": 1,
-      "ניסים דרויש": 2,
-      "תמר דרויש": 2,
-      "שלומית דרויש": 2,
-      "עמית אליאס": 2,
-      "רונה בלאש": 2,
-      "מירון בלאש": 2,
-      "נוי בלאש": 2,
-      "רומי בלאש": 2,
-      "חזי שמשי": 2,
-      "נבו שמשי": 2,
-      "אלה שמשי": 2,
-      "אוריה דרויש": 2,
-      "עדן חדד": 3,
-      "אלעזר ביטון": 3,
-      "לינוי ביטון": 3,
-      "דוריאן וקנין": 3,
-      "אסף בדש": 3,
-      "יובל מור": 3,
-      "דן מקלר": 3,
-      "אביחי תרם": 3,
-      "יובל קפלן": 3,
-      "איתי המבורגר": 3,
-      "ליאם דויטש": 3,
-      "עדי הדר": 4,
-      "ירין הדר": 4,
-      "ענת הדר": 4,
-      "דור הדר": 4,
-      "עמיתי הדר": 4,
-      "סהר הדר": 4,
-      "שני צור": 4,
-      "ספיר צור": 4,
-      "אסנת הלל": 4,
-      "עדי הינדי": 5,
-      "גל אייזנמן": 5,
-      "תומר אייזנמן": 5,
-      "שלומית אייזנמן": 5,
-      "אילן אייזנמן": 5,
-      "קורל אייזנמן": 5,
-      "לירון רווח": 5,
-      "אור רווח": 5,
-      "מיכל רווח": 5,
-      "צחי רווח": 5
       "ענת הדר": 1,
       "דור הדר": 1,
       "עמיתי הדר": 1,
@@ -183,15 +161,16 @@ const guestList = {
       "סיגי": 7,
       "מאיר אלקובי": 7,
       "פאני אלקובי": 7,
-      "קרן מחלב": 8,
-      "ערן מחלב": 8,
+"קרן מחלב": 8,
+"ערן מחלב": 8,
       "יהלי מחלב": 8,
-      "סהר מחלב": 8,
-      "יהב מחלב": 8,
-      "אפי לובלציק": 8,
-      "תמר לובלציק": 8,
-      "מאי עזרא": 8,
-      "עוז עזרא": 8,
+"סהר מחלב": 8,
+"יהב מחלב": 8,
+      "יהלי מחלב": 8,
+"אפי לובלציק": 8,
+"תמר לובלציק": 8,
+"מאי עזרא": 8,
+"עוז עזרא": 8,
       "ניסים דרויש": 9,
       "שלומית דרויש": 9,
       "עמית אליאס": 9,
@@ -224,19 +203,8 @@ const guestList = {
       "הודיה דניאל": 11,
       "דניאל דניאל": 11,
       "נהוראי פולצי": 11,
-      "עדי הינדי": 11
+      "עדי הינדי": 11,
+     
 };
 
 function findTable() {
-const name = document.getElementById("guestName").value.trim();
-const tableNumber = guestList[name];
-const resultDiv = document.getElementById("result");
-if (tableNumber) {
-resultDiv.textContent = `ברוך הבא לחינה שלנו! תודה רבה שבאת ${name}! מקומך בשולחן ${tableNumber} 🎉`;
-} else {
-resultDiv.textContent = "מצטערים, לא מצאנו את שמך ברשימה. בדוק שוב או פנה למארחים 🙏";
-}
-}
-</script>
-</body>
-</html>
