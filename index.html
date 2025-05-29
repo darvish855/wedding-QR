@@ -1,82 +1,61 @@
-<!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ברוך הבא לחינה!</title>
-  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Assistant', sans-serif;
-      background: url('https://images.unsplash.com/photo-1549887534-45953e36e742?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
-      background-size: cover;
-      color: #3e2723;
-      backdrop-filter: blur(5px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      padding: 20px;
-    }
+<title>ברוך הבא לחינה!</title>
+<style>
+body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fffaf0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #fffaf0, #f5e6cc);
+      color: #4b3832;
+display: flex;
+flex-direction: column;
+align-items: center;
+@@ -16,21 +17,40 @@
+text-align: center;
+direction: rtl;
+}
     h1 {
-      font-size: 40px;
-      margin-bottom: 20px;
-      color: #b71c1c;
-      text-shadow: 1px 1px 2px #fff;
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #bfa046;
     }
     p {
       font-size: 20px;
-      margin-bottom: 20px;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 10px;
-      border-radius: 12px;
-      display: inline-block;
     }
-    input {
-      padding: 12px;
-      font-size: 18px;
-      margin-top: 10px;
-      border: 2px solid #b71c1c;
+input {
+padding: 10px;
+font-size: 18px;
+margin-top: 20px;
+      border: 2px solid #bfa046;
       border-radius: 8px;
-      width: 260px;
-    }
-    button {
-      padding: 12px 24px;
-      font-size: 18px;
-      margin-top: 15px;
-      cursor: pointer;
-      background: linear-gradient(45deg, #b71c1c, #f06292);
+      width: 250px;
+}
+button {
+padding: 10px 20px;
+font-size: 18px;
+margin-top: 10px;
+cursor: pointer;
+      background-color: #bfa046;
       color: white;
       border: none;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-      transition: 0.3s;
+      transition: background-color 0.3s;
     }
     button:hover {
-      background: linear-gradient(45deg, #c62828, #ec407a);
-    }
-    #result {
-      margin-top: 30px;
-      font-size: 24px;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 15px;
-      border-radius: 12px;
-      max-width: 80%;
-    }
-  </style>
+      background-color: #a38b3f;
+}
+#result {
+margin-top: 30px;
+font-size: 24px;
+      color: #444;
+      color: #4b3832;
+}
+</style>
 </head>
-<body>
-  <h1>ברוך הבא לחינה שלנו!</h1>
-  <p>הזן את שמך כדי לדעת היכן אתה יושב 🎉</p>
-  <input type="text" id="guestName" placeholder="הכנס את שמך כאן">
-  <button onclick="findTable()">חפש שולחן</button>
-  <div id="result"></div>
+@@ -43,70 +63,136 @@
 
-  <script>
-    const guestList = {
-     "קרן מחלב": 1,
+<script>
+const guestList = {
+      "קרן מחלב": 1,
       "ערן מחלב": 1,
       "סהר מחלב": 1,
       "יהב מחלב": 1,
@@ -246,18 +225,18 @@
       "דניאל דניאל": 11,
       "נהוראי פולצי": 11,
       "עדי הינדי": 11
-    };
+};
 
-    function findTable() {
-      const name = document.getElementById("guestName").value.trim();
-      const tableNumber = guestList[name];
-      const resultDiv = document.getElementById("result");
-      if (tableNumber) {
-        resultDiv.textContent = `ברוך הבא לחינה שלנו! תודה רבה שבאת ${name}! מקומך בשולחן ${tableNumber} 🎉`;
-      } else {
-        resultDiv.textContent = "מצטערים, לא מצאנו את שמך ברשימה. בדוק שוב או פנה למארחים 🙏";
-      }
-    }
-  </script>
+function findTable() {
+const name = document.getElementById("guestName").value.trim();
+const tableNumber = guestList[name];
+const resultDiv = document.getElementById("result");
+if (tableNumber) {
+resultDiv.textContent = `ברוך הבא לחינה שלנו! תודה רבה שבאת ${name}! מקומך בשולחן ${tableNumber} 🎉`;
+} else {
+resultDiv.textContent = "מצטערים, לא מצאנו את שמך ברשימה. בדוק שוב או פנה למארחים 🙏";
+}
+}
+</script>
 </body>
 </html>
