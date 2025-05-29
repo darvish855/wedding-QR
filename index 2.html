@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ברוך הבא לחינה!</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #fffaf0, #f5e6cc);
+      color: #4b3832;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      direction: rtl;
+    }
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #bfa046;
+    }
+    p {
+      font-size: 20px;
+    }
+    input {
+      padding: 10px;
+      font-size: 18px;
+      margin-top: 20px;
+      border: 2px solid #bfa046;
+      border-radius: 8px;
+      width: 250px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-top: 10px;
+      cursor: pointer;
+      background-color: #bfa046;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #a38b3f;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 24px;
+      color: #4b3832;
+    }
+  </style>
+</head>
+<body>
+  <h1>ברוך הבא לחינה שלנו!</h1>
+  <p>הזן את שמך כדי לדעת היכן אתה יושב 🎉</p>
+  <input type="text" id="guestName" placeholder="הכנס את שמך כאן">
+  <button onclick="findTable()">חפש שולחן</button>
+  <div id="result"></div>
+
+  <script>
+    const guestList = {
+      "ענת הדר": 1,
+      "דור הדר": 1,
+      "עמיתי הדר": 1,
+      "סהר הדר": 1,
+      "שני צור": 1,
+      "ספיר צור": 1,
+      "אוסנת הלל": 1,
+      "שלומית איזנמן": 1,
+      "אילן איזנמן": 1,
+      "קורל איזנמן": 1,
+      "עדן חדד": 2,
+      "אלעזר ביטון": 2,
+      "לינוי ביטון": 2,
+      "דוריאן וקנין": 2,
+      "אסף בדש": 2,
+      "יובל מור": 2,
+      "אביחי תרם": 2,
+      "יובל קפלן": 2,
+      "איתי המבורגר": 2,
+      "בר זנה": 2,
+      "יוסף פולצי": 2,
+      "אוראל פולצי": 2,
+      "מאיר סוויסה": 3,
+      "מלכה סוויסה": 3,
+      "יהודית חנגו": 3,
+      "מרי אבחלק": 3,
+      "נטלי דוידוב": 3,
+      "סלין רפאלי": 3,
+      "יחיאל גיבלי": 3,
+      "פאני גיבלי": 3,
+      "ניר": 3,
+      "נירה": 3,
+      "הילה": 3,
+      "נאוה אסרף": 4,
+      "שחר אסרף": 4,
+      "אהרון פולצי": 4,
+      "אלי פולצי": 4,
+      "עדן וקנין": 4,
+      "רבקה ישראל": 4,
+      "יפה מקונן": 4,
+      "מיכל הופמן": 4,
+      "נעמה שועה": 4,
+      "עדי חגג": 5,
+      "בכור חגג": 5,
+      "אילנה חגג": 5,
+      "סרמילה": 5,
+      "איילת בן עזרא": 5,
+      "ליאור בן עזרא": 5,
+      "רלי חסאן": 5,
+      "אסתר חסאן": 5,
+      "מוקי חגג": 5,
+      "ברוך חגג": 5,
+      "אלינה": 5,
+      "ליאור": 6,
+      "אנגלינה מישייב": 6,
+      "גלית חונה": 6,
+      "דוד מקייטון": 6,
+      "שני בנימיני": 6,
+      "נועה חדיף": 6,
+      "יובל סלמנדר": 6,
+      "אבידן מיכאלי": 6,
+      "אוראל בוחבוט": 6,
+      "אוראל שושן": 6,
+      "ספיר אלפסי": 6,
+      "שונטל תורגמן": 7,
+      "ניסים תורגמן": 7,
+      "זהבית סוויסה": 7,
+      "הודיה סעאת": 7,
+      "ענווה כפיר": 7,
+      "נתי תורגמן": 7,
+      "יובל תורגמן": 7,
+      "תמי מיכאל": 7,
+      "מאיר מיכאל": 7,
+      "סיגי": 7,
+      "מאיר אלקובי": 7,
+      "פאני אלקובי": 7,
+      "קרן מחלב": 8,
+      "ערן מחלב": 8,
+      "יהלי מחלב": 8,
+      "סהר מחלב": 8,
+      "יהב מחלב": 8,
+      "אפי לובלציק": 8,
+      "תמר לובלציק": 8,
+      "מאי עזרא": 8,
+      "עוז עזרא": 8,
+      "ניסים דרויש": 9,
+      "שלומית דרויש": 9,
+      "עמית אליאס": 9,
+      "רונה בלאש": 9,
+      "מירון בלאש": 9,
+      "נוי בלאש": 9,
+      "רומי בלאש": 9,
+      "חזי שמשי": 9,
+      "נבו שמשי": 9,
+      "אלה שמשי": 9,
+      "מיכל רווח": 9,
+      "צחי רווח": 9,
+      "יפית מיכאלי": 10,
+      "מישל מיכאלי": 10,
+      "אורטל אלוני": 10,
+      "לואיז מיכאל": 10,
+      "פראנג מיכאלי": 10,
+      "ירון מיכאל": 10,
+      "יניב מיכאל": 10,
+      "סיגל מיכאלי": 10,
+      "יערית בארנס": 10,
+      "זהבה חגג": 10,
+      "עמית חגג": 10,
+      "גל איזנמן": 11,
+      "תומר איזנמן": 11,
+      "עדי הדר": 11,
+      "ירין הדר": 11,
+      "לירון רווח": 11,
+      "אור רווח": 11,
+      "הודיה דניאל": 11,
+      "דניאל דניאל": 11,
+      "נהוראי פולצי": 11,
+      "עדי הינדי": 11
+    };
+
+    function findTable() {
+      const name = document.getElementById("guestName").value.trim();
+      const tableNumber = guestList[name];
+      const resultDiv = document.getElementById("result");
+      if (tableNumber) {
+        resultDiv.textContent = `ברוך הבא לחינה שלנו! תודה רבה שבאת ${name}! מקומך בשולחן ${tableNumber} 🎉`;
+      } else {
+        resultDiv.textContent = "מצטערים, לא מצאנו את שמך ברשימה. בדוק שוב או פנה למארחים 🙏";
+      }
+    }
+  </script>
+</body>
+</html>
